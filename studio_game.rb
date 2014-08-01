@@ -30,18 +30,25 @@ class Player
   end
 end
 
+
 player1 = Player.new('moe')
 player2 = Player.new('larry', 60)
 player3 = Player.new('curly', 125)
-puts player2
-puts player3
-player3.blam
-player3.w00t
-puts player3
-puts player1
-puts player1.health
-puts player2.health
-puts player3.health
-player2.name = "lawrence"
-puts player2
-puts player2.score
+player4 = Player.new('shemp', 90)
+players = [player1, player2, player3]
+players.pop
+players.push(player4)
+
+puts "There are #{players.count} players in the game."
+
+players.each do |player|
+  puts "#{player.name}'s health rating is #{player.health}."
+end
+
+players.each do |player|
+  player.blam
+  player.w00t
+  player.w00t
+  puts player
+end
+
