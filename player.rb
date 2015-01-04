@@ -1,18 +1,22 @@
+require_relative 'treasure_trove'
+require_relative 'playable'
+
 class Player
-  require_relative 'treasure_trove'
+    include Playable
+
   attr_accessor :name
-  attr_reader :health
+  attr_accessor :health
 
   def each_found_treasure
     @found_treasures.each do |name, points|
       yield Treasure.new(name, points)
     end
   end
-  
+
   def <=>(other)
     other.score <=> score
   end
-  
+
   def initialize(name, health=100)
     @name = name.capitalize
     @health = health
@@ -29,20 +33,6 @@ class Player
 
   def score
     @health + points 
-  end
-
-  def w00t
-    @health += 15
-    puts "#{@name} got w00ted!"
-  end
-
-  def blam
-    @health -= 10
-    puts "#{@name} got blammed!"
-  end
-
-  def strong?
-    @health > 100
   end
 
   def found_treasure(treasure)
