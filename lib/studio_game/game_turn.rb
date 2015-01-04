@@ -3,9 +3,10 @@ require_relative 'die'
 require_relative 'treasure_trove'
 require_relative 'loaded_die'
 
-module GameTurn
-  def self.take_turn(player)
-    die = Die.new
+module StudioGame
+  module GameTurn
+    def self.take_turn(player)
+      die = Die.new
       case die.roll
       when 1..2
         player.blam
@@ -17,5 +18,6 @@ module GameTurn
 
       treasure = TreasureTrove.random
       player.found_treasure(treasure)
+    end
   end
 end
